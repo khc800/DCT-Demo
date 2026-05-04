@@ -203,26 +203,26 @@ export default function App() {
   }, [dctData, dimensions, numCoeffs]);
 
   return (
-    <div dir="rtl" className="min-h-screen bg-slate-50 p-4 text-slate-800 sm:p-8">
-      <main className="mx-auto flex w-full max-w-6xl flex-col gap-6">
-        <header className="rounded-lg border border-slate-200 bg-white p-6 text-center shadow-sm sm:p-8">
-          <div className="mb-4 inline-flex items-center justify-center rounded-lg bg-indigo-100 p-3 text-indigo-600">
+    <div dir="rtl" className="min-h-screen bg-slate-50 px-3 py-4 text-slate-800 sm:p-8">
+      <main className="mx-auto flex w-full max-w-6xl flex-col gap-4 sm:gap-6">
+        <header className="rounded-lg border border-slate-200 bg-white p-4 text-center shadow-sm sm:p-8">
+          <div className="mb-4 inline-flex items-center justify-center rounded-lg bg-indigo-100 p-2.5 text-indigo-600 sm:p-3">
             <Activity size={32} />
           </div>
-          <h1 className="text-3xl font-bold text-slate-950">
+          <h1 className="text-2xl font-bold leading-tight text-slate-950 sm:text-3xl">
             عرض تحويل جيب التمام المتقطع
-            <span className="mt-1 block text-xl font-normal text-slate-500" dir="ltr">
+            <span className="mt-2 block text-base font-normal leading-snug text-slate-500 sm:text-xl" dir="ltr">
               Discrete Cosine Transform Demo
             </span>
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-slate-600">
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
             ارفع صورة لتجربة فكرة ضغط الصور باستخدام DCT. يقسم التطبيق الصورة إلى كتل، يحسب تردداتها،
             ثم يعيد بناءها بعدد مختلف من المعاملات حتى ترى أثر الضغط على الجودة.
           </p>
         </header>
 
-        <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-8">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
             <div className="space-y-4">
               <h2 className="flex items-center gap-2 text-lg font-semibold">
                 <UploadCloud className="text-indigo-500" size={24} />
@@ -231,11 +231,11 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-indigo-200 bg-indigo-50 p-8 text-center transition-colors hover:bg-indigo-100"
+                className="flex min-h-48 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-indigo-200 bg-indigo-50 p-5 text-center transition-colors hover:bg-indigo-100 sm:p-8"
               >
                 <ImageIcon size={48} className="mb-3 text-indigo-400" />
                 <span className="font-medium text-indigo-700">اضغط هنا لاختيار صورة</span>
-                <span className="mt-1 text-sm text-indigo-400">يفضل استخدام صورة بأبعاد مناسبة مثل 512x512</span>
+                <span className="mt-1 max-w-64 text-sm leading-6 text-indigo-400">يفضل استخدام صورة بأبعاد مناسبة مثل 512x512</span>
               </button>
               <input
                 ref={fileInputRef}
@@ -252,16 +252,16 @@ export default function App() {
                 التحكم بالمعاملات
               </h2>
 
-              <div className="rounded-lg border border-slate-200 bg-slate-50 p-6">
-                <div className="mb-3 flex items-center justify-between gap-4">
+              <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                   <span className="font-medium text-slate-700">عدد المعاملات:</span>
-                  <span className="rounded-lg bg-indigo-600 px-3 py-1 text-lg font-bold text-white" dir="ltr">
+                  <span className="w-fit rounded-lg bg-indigo-600 px-3 py-1 text-base font-bold text-white sm:text-lg" dir="ltr">
                     {numCoeffs} / 64
                   </span>
                 </div>
-                <div className="mb-4 flex items-center justify-between gap-4">
+                <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                   <span className="font-medium text-slate-700">نسبة الضغط:</span>
-                  <span className="rounded-lg bg-emerald-500 px-3 py-1 text-lg font-bold text-white" dir="ltr">
+                  <span className="w-fit rounded-lg bg-emerald-500 px-3 py-1 text-base font-bold text-white sm:text-lg" dir="ltr">
                     {(((64 - numCoeffs) / 64) * 100).toFixed(1)}%
                   </span>
                 </div>
@@ -281,7 +281,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 rounded-lg border border-amber-100 bg-amber-50 p-4 text-sm text-amber-800">
+              <div className="flex items-start gap-3 rounded-lg border border-amber-100 bg-amber-50 p-4 text-sm leading-6 text-amber-800">
                 <Info size={20} className="mt-0.5 shrink-0" />
                 <p>
                   كلما قل عدد المعاملات، تقل البيانات اللازمة لتمثيل الصورة، لكن تنخفض الدقة. هذه هي
@@ -293,20 +293,20 @@ export default function App() {
         </section>
 
         {originalImage && (
-          <section className="relative grid grid-cols-1 gap-6 md:grid-cols-2">
+          <section className="relative grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
             {isProcessing && (
-              <div className="absolute inset-0 z-10 flex flex-col items-center justify-center rounded-lg border border-indigo-100 bg-white/80 shadow-lg backdrop-blur-sm">
+              <div className="absolute inset-0 z-10 flex flex-col items-center justify-center rounded-lg border border-indigo-100 bg-white/85 p-4 text-center shadow-lg backdrop-blur-sm">
                 <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-indigo-200 border-t-indigo-600" />
-                <h3 className="text-xl font-bold text-indigo-950">جاري معالجة الصورة...</h3>
-                <p className="mt-2 text-indigo-600">يتم حساب معاملات التردد للصورة بالكامل</p>
+                <h3 className="text-lg font-bold text-indigo-950 sm:text-xl">جاري معالجة الصورة...</h3>
+                <p className="mt-2 text-sm text-indigo-600 sm:text-base">يتم حساب معاملات التردد للصورة بالكامل</p>
               </div>
             )}
 
             <figure className="flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-              <figcaption className="border-b border-slate-100 bg-slate-50 p-4 font-semibold text-slate-700">
+              <figcaption className="border-b border-slate-100 bg-slate-50 p-3 font-semibold text-slate-700 sm:p-4">
                 الصورة الأصلية
               </figcaption>
-              <div className="flex flex-1 items-center justify-center bg-checkered p-4">
+              <div className="flex min-h-60 flex-1 items-center justify-center overflow-auto bg-checkered p-3 sm:p-4">
                 <img
                   src={originalImage}
                   alt="Original upload"
@@ -316,7 +316,7 @@ export default function App() {
             </figure>
 
             <figure className="relative flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-              <figcaption className="flex items-center justify-between gap-4 border-b border-slate-100 bg-slate-50 p-4 font-semibold text-slate-700">
+              <figcaption className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 bg-slate-50 p-3 font-semibold text-slate-700 sm:gap-4 sm:p-4">
                 <span>الصورة المعاد بناؤها</span>
                 {isRendering && (
                   <span className="animate-pulse rounded bg-indigo-100 px-2 py-1 text-xs text-indigo-700">
@@ -324,7 +324,7 @@ export default function App() {
                   </span>
                 )}
               </figcaption>
-              <div className="flex flex-1 items-center justify-center bg-checkered p-4">
+              <div className="flex min-h-60 flex-1 items-center justify-center overflow-auto bg-checkered p-3 sm:p-4">
                 <canvas
                   ref={canvasProcessedRef}
                   className="h-auto max-w-full rounded border border-slate-300 shadow-sm"
